@@ -23,19 +23,13 @@ def SubFolders():
     Ask()
 
 def ByExt():        
-
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
         subdirs[:] = []
 
-        # Debug
-        # print ("root", root)
-        # print ("subdirs", subdirs)
-        # print ("files", files)
-
         for file in files:
             path = os.path.join(root, file)
-            fileName, fileExtension = os.path.splitext(path)
+            fileExtension = os.path.splitext(path)[1]
 
             if path != filePath:
                 if fileExtension != "":
@@ -49,7 +43,31 @@ def ByExt():
                 shutil.move(path, folderPath)
 
 def ByName():
-    return
+    print ("Enter a phrase:")
+    name = input("")
+
+    for root, subdirs, files in os.walk(currentLocation):
+        files = [f for f in files if not f[0] == '.']
+        subdirs[:] = []
+
+        for file in files:
+            path = os.path.join(root, file)
+            fileName = os.path.splitext(path)[0]
+
+            if path != filePath:
+                folderPath = os.path.join(root, name)
+
+                if not os.path.isdir(name):
+                    os.mkdir(folderPath)
+                
+                if name in fileName:
+                    shutil.move(file, folderPath)
+    
+    print ("Run again? [Y/n]")
+    answer = input("")
+
+    if answer == "Y" or answer == "y":
+        ByName()
 
 def GitHub():
     print ("Made by 3174N and SFR-git \n")
@@ -86,3 +104,6 @@ def Ask():
 
 print (batchfulLogo)
 Ask()
+
+def Exit():
+    return
