@@ -5,22 +5,28 @@ currentLocation = os.path.dirname(os.path.abspath(__file__))
 batchfulLogo = " _             _         _       __         _ \n| |__    __ _ | |_  ___ | |__   / _| _   _ | |\n| '_ \  / _` || __|/ __|| '_ \ | |_ | | | || |\n| |_) || (_| || |_| (__ | | | ||  _|| |_| || |\n|_.__/  \__,_| \__|\___||_| |_||_|   \__,_||_|"
 
 def ByExt():        
-    # fileName, fileExtension = os.path.splitext(currentLocation)
-    # print (fileName)
-    # print (fileExtension)
 
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
         subdirs[:] = [d for d in subdirs if not d[0] == '.']
 
         # Debug
-        print ("root", root)
-        print ("subdirs", subdirs)
-        print ("files", files)
+        # print ("root", root)
+        # print ("subdirs", subdirs)
+        # print ("files", files)
 
-        # for file in files:
-        #     path = os.path.join(root, file)
-        #     shutil.move(path, r"C:\Users\3174N\Documents\batchful\Test\TestFolder")
+        for file in files:
+            path = os.path.join(root, file)
+            fileName, fileExtension = os.path.splitext(path)
+                      
+            if fileExtension != "":
+                folderPath = os.path.join(root, fileExtension)
+            else:
+                folderPath = os.path.join(root, "FIle")
+
+            if not os.path.isdir(fileExtension):                
+                os.mkdir(folderPath)
+            shutil.move(path, folderPath)
 
 def ByName():
     return
