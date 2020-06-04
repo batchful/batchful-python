@@ -1,9 +1,15 @@
-import webbrowser
+import webbrowser, os, shutil, tkinter
+
+currentLocation = os.path.abspath(__file__)
 
 batchfulLogo = " _             _         _       __         _ \n| |__    __ _ | |_  ___ | |__   / _| _   _ | |\n| '_ \  / _` || __|/ __|| '_ \ | |_ | | | || |\n| |_) || (_| || |_| (__ | | | ||  _|| |_| || |\n|_.__/  \__,_| \__|\___||_| |_||_|   \__,_||_|"
 
-def ByExt():
-    return
+def ByExt():        
+    print (currentLocation)
+
+    fileName, fileExtension = os.path.splitext(currentLocation)
+    print (fileName)
+    print (fileExtension)
 
 def ByName():
     return
