@@ -18,11 +18,11 @@ def ByExt():
         for file in files:
             path = os.path.join(root, file)
             fileName, fileExtension = os.path.splitext(path)
-                      
+
             if fileExtension != "":
                 folderPath = os.path.join(root, fileExtension)
             else:
-                folderPath = os.path.join(root, "FIle")
+                folderPath = os.path.join(root, "FILE")
 
             if not os.path.isdir(fileExtension):                
                 os.mkdir(folderPath)
