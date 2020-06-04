@@ -1,5 +1,6 @@
 import webbrowser, os, shutil, tkinter
 
+filePath = os.path.abspath(__file__)
 currentLocation = os.path.dirname(os.path.abspath(__file__))
 
 batchfulLogo = " _             _         _       __         _ \n| |__    __ _ | |_  ___ | |__   / _| _   _ | |\n| '_ \  / _` || __|/ __|| '_ \ | |_ | | | || |\n| |_) || (_| || |_| (__ | | | ||  _|| |_| || |\n|_.__/  \__,_| \__|\___||_| |_||_|   \__,_||_|"
@@ -19,14 +20,16 @@ def ByExt():
             path = os.path.join(root, file)
             fileName, fileExtension = os.path.splitext(path)
 
-            if fileExtension != "":
-                folderPath = os.path.join(root, fileExtension)
-            else:
-                folderPath = os.path.join(root, "FILE")
+            if path != filePath:
+                if fileExtension != "":
+                    folderPath = os.path.join(root, fileExtension)
+                else:
+                    folderPath = os.path.join(root, "FILE")
 
-            if not os.path.isdir(fileExtension):                
-                os.mkdir(folderPath)
-            shutil.move(path, folderPath)
+                if not os.path.isdir(fileExtension):                
+                    os.mkdir(folderPath)
+                
+                shutil.move(path, folderPath)
 
 def ByName():
     return
