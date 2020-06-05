@@ -121,6 +121,7 @@ def GitHub():
 def OpenGitHub():
     webbrowser.open("https://github.com/batchful/batchful-python")
 
+#region help
 def Help():
     helpWindow = Tk()
     helpWindow.title("batchful - help")
@@ -144,6 +145,7 @@ you can make sub-folders search active by checking the checkbox", font = ("Ariel
     helpText.grid(column = 0, row = 0)
     helpText2.grid(column = 0, row = 1)
     backButton.grid(column = 0, row = 2)
+#endregion
 #endregion
 
 #region main loop
