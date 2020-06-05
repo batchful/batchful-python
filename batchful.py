@@ -122,7 +122,28 @@ def OpenGitHub():
     webbrowser.open("https://github.com/batchful/batchful-python")
 
 def Help():
-    return
+    helpWindow = Tk()
+    helpWindow.title("batchful - help")
+
+    helpText = Label(helpWindow, text = "HOW TO USE BATCHFUL:", font = ("Ariel Bold", 25))
+    helpText2 = Label(helpWindow, text = "In the main screen, choose a method of organization.\n\
+Currently, there are 2 methods of organization: \n\
+1. By file extension: creates a directory for every filetype \n\
+    and sorts the files accordingly. \n\
+2. By file name: creates a directory for a spacefic phrase and moves \n\
+    all of the files containing the phrase to the directory. \n\
+\n\
+You will also be presented with the option to sort through subfolders. \n\
+This process deletes the unnecessary folders after it's done sorting. \n\
+\n\
+To run the program, just press the desired button. \n\
+you can make sub-folders search active by checking the checkbox", font = ("Ariel", 15))
+
+    backButton = Button(helpWindow, text = "Go Back", command = helpWindow.destroy)
+
+    helpText.grid(column = 0, row = 0)
+    helpText2.grid(column = 0, row = 1)
+    backButton.grid(column = 0, row = 2)
 #endregion
 
 #region main loop
