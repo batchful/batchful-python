@@ -4,6 +4,7 @@ A simple and easy-to use python directory organizer.
 
 ## Installation
 Download Python 3.8.3 [here](https://www.python.org/downloads/).
+
 Configre the settings and run the `.exe` / `.py` file.
 
 ## Usage
