@@ -66,12 +66,27 @@ def ByExt():
                 
                 shutil.move(path, folderPath)
 
-def ByName():
+def SortByName():
+    def GetName():
+        ByName(askName.get())
+
+    askWindow = Tk()
+    askWindow.title("batchful")
+    askWindow.geometry("200x200")
+
+    title = Label(askWindow, text = "Enter A Phrase")
+    title.grid(column = 1, row = 0)
+
+    askName = Entry(askWindow, width = 10)
+    askName.grid(column = 1, row = 1)
+
+    askButton = Button(askWindow, text = "Search", command = GetName)
+    askButton.grid(column = 1, row = 2)
+
+def ByName(name):
     if sortSubFolders.get() == 1:
         SubFolders()
 
-    print ("Enter a phrase:")
-    name = input("")
 
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
@@ -89,12 +104,6 @@ def ByName():
                 
                 if name in fileName:
                     shutil.move(file, folderPath)
-    
-    print ("Run again? [Y/n]")
-    answer = input("")
-
-    if answer == "Y" or answer == "y":
-        ByName()
 
 def GitHub():
     print ("Made by 3174N and SFR-git \n")
@@ -106,30 +115,6 @@ def GitHub():
         webbrowser.open("https://github.com/batchful/batchful-python")
 
 def Help():
-    return
-
-def Ask():
-    print ("This program organizes folders. place this file in the directory you wish to organize and run it.")
-    print ("Choose a method of organization: \n")
-    print ("1. By file extensions.")
-    print ("2. By file names.")
-    print ("3. Empty sub-folders. \n\n")
-    print ("Press g for the GitHub repository page, h for help and q to exit the program. \n")
-
-    answer = input("")
-
-    if answer == "1":
-        ByExt()
-    elif answer == "2":
-        ByName()
-    elif answer == "3":
-        SubFolders()
-    elif answer == "G" or answer == "g":
-        GitHub()
-    elif answer == "H" or answer == "h":
-        Help()
-
-
     return
 #endregion
 
@@ -146,7 +131,7 @@ extensionButton = Button(window, text = "Sort By Extension", command = ByExt)
 extensionButton.grid(column = 0, row = 1)
 # extensionButton.pack()
 
-nameButton = Button(window, text = "Sort By Name", command = ByName)
+nameButton = Button(window, text = "Sort By Name", command = SortByName)
 nameButton.grid(column = 1, row = 1)
 # nameButton.pack()
 
