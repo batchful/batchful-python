@@ -7,6 +7,10 @@ No installation needed, just run the `.exe` / `.py` file in the desired director
 ## Usage
 Paste the program in the directory you wish to organize and run it.
 
+### Dependencies
+To run batchful, the following dependencies are needed: 
+* `Python 3.8.3` ([download here](https://www.python.org/downloads/))
+
 ### Configuration
 There are currently two implemented methods of organization *(more coming soon -- see below)*: 
 1. By file extension: creates a directory for every filetype and sorts the files accordingly. 
