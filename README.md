@@ -15,7 +15,8 @@ There are currently two implemented methods of organization *(more coming soon -
 You will also be presented with the option to sort through subfolders.
 This process deletes the unnecessary folders after it's done sorting.
 
+Press the button with the desired function to start.
+
 ## Coming Soon
 - An `.exe` version.
-- A GUI version of the program is in development.
 - Making the file extension option only create folders for used files.
