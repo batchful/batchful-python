@@ -1,8 +1,15 @@
-import webbrowser, os, shutil, tkinter
+# Imports modules
+import webbrowser, os, shutil
+from tkinter import *
+from tkinter.ttk import *
 
 # Final variables
 filePath = os.path.abspath(__file__) # Includes 'batchful.py'
 currentLocation = os.path.dirname(os.path.abspath(__file__)) # Doesn't include 'batchful.py'
+
+# Other variables
+xSize = "500"
+ySize = "500"
 
 #region functions
 def PrintLogo():
@@ -26,8 +33,6 @@ def SubFolders():
                 shutil.move(path, currentLocation)
                     
                 CheckIfEmpty()
-           
-    Ask()
 
 def CheckIfEmpty():
     for root, subdirs, files in os.walk(currentLocation):
@@ -37,7 +42,10 @@ def CheckIfEmpty():
         if not files:
             os.rmdir(root)   
 
-def ByExt():        
+def ByExt():   
+    if sortSubFolders.get() == 1:
+        SubFolders()
+
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
         subdirs[:] = []
@@ -58,6 +66,9 @@ def ByExt():
                 shutil.move(path, folderPath)
 
 def ByName():
+    if sortSubFolders.get() == 1:
+        SubFolders()
+
     print ("Enter a phrase:")
     name = input("")
 
@@ -122,5 +133,22 @@ def Exit():
 #endregion
 
 # Main loop / code
-PrintLogo()
-Ask()
+window = Tk()
+window.title("batchful")
+window.geometry(xSize + "x" + ySize)
+
+title = Label(window, text = "batchful", font = ("Ariel Bold", 50))
+title.grid(column = 1, row = 0)
+title.focus()
+
+extensionButton = Button(window, text = "Sort By Extension", command = ByExt)
+extensionButton.grid(column = 0, row = 1)
+
+nameButton = Button(window, text = "Sort By Name", command = ByName)
+nameButton.grid(column = 1, row = 1)
+
+sortSubFolders = IntVar()
+sortSubFoldersCheckBox = Checkbutton(window, text = "Search Sub-Folders", var = sortSubFolders)
+sortSubFoldersCheckBox.grid(column = 2, row = 1)
+
+window.mainloop()
