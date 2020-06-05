@@ -18,6 +18,12 @@ ySize = "500"
 #endregion
 
 #region functions
+def combineFuncs(*funcs):
+    def combinedFunc(*args, **kwargs):
+        for f in funcs:
+            f(*args, **kwargs)
+    return combinedFunc
+
 def SubFolders():
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
@@ -49,6 +55,8 @@ def ByExt():
         files = [f for f in files if not f[0] == '.']
         subdirs[:] = []
 
+        count = 0
+
         for file in files:
             path = os.path.join(root, file)
             fileExtension = os.path.splitext(path)[1]
@@ -63,6 +71,9 @@ def ByExt():
                     os.mkdir(folderPath)
                 
                 shutil.move(path, folderPath)
+                count += 1
+    
+    messagebox.showinfo(title = "batchful", message = "Moved " + str(count) + " File(s)")
 
 def SortByName():
     def GetName():
@@ -78,7 +89,7 @@ def SortByName():
     askName = Entry(askWindow, width = 10)
     askName.grid(column = 1, row = 1)
 
-    askButton = Button(askWindow, text = "Search", command = GetName)
+    askButton = Button(askWindow, text = "Search", command = combineFuncs(GetName, askWindow.destroy))
     askButton.grid(column = 1, row = 2)
 
     quitButton = Button(askWindow, text = "Go Back", command = askWindow.destroy)
@@ -93,6 +104,8 @@ def ByName(name):
         files = [f for f in files if not f[0] == '.']
         subdirs[:] = []
 
+        count = 0
+
         for file in files:
             path = os.path.join(root, file)
             fileName = os.path.splitext(path)[0]
@@ -105,6 +118,9 @@ def ByName(name):
                 
                 if (name in fileName):
                     shutil.move(file, folderPath)
+                    count += 1
+    
+    messagebox.showinfo(title = "batchful", message = "Moved " + str(count) + " File(s)")
 
 def GitHub():
     open = messagebox.askquestion(title = "GitHub", message = "Open GitHub?")
