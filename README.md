@@ -19,3 +19,4 @@ Press the button with the desired function to start.
 
 ## Coming Soon
 - Better GUI
+- Dark theme

@@ -34,7 +34,7 @@ def SubFolders():
         
         for file in files:
             print (root, currentLocation)
-            if root != currentLocation:
+            if (root != currentLocation):
                 path = os.path.join(root, file)
                 shutil.move(path, currentLocation)
                     
@@ -45,11 +45,11 @@ def CheckIfEmpty():
         files = [f for f in files if not f[0] == '.']
         subdirs[:] = [d for d in subdirs if not d[0] == '.']
 
-        if not files:
+        if (not files):
             os.rmdir(root)   
 
 def ByExt():   
-    if sortSubFolders.get() == 1:
+    if (sortSubFolders.get() == 1):
         SubFolders()
 
     for root, subdirs, files in os.walk(currentLocation):
@@ -60,13 +60,13 @@ def ByExt():
             path = os.path.join(root, file)
             fileExtension = os.path.splitext(path)[1]
 
-            if path != filePath:
-                if fileExtension != "":
+            if (path != filePath):
+                if (fileExtension != ""):
                     folderPath = os.path.join(root, fileExtension)
                 else:
                     folderPath = os.path.join(root, "FILE")
 
-                if not os.path.isdir(fileExtension):                
+                if (not os.path.isdir(fileExtension)):                
                     os.mkdir(folderPath)
                 
                 shutil.move(path, folderPath)
@@ -92,7 +92,7 @@ def SortByName():
     quitButton.grid(column = 0, row = 3)
 
 def ByName(name):
-    if sortSubFolders.get() == 1:
+    if (sortSubFolders.get() == 1):
         SubFolders()
 
 
@@ -104,18 +104,18 @@ def ByName(name):
             path = os.path.join(root, file)
             fileName = os.path.splitext(path)[0]
 
-            if path != filePath:
+            if (path != filePath):
                 folderPath = os.path.join(root, name)
 
-                if not os.path.isdir(name):
+                if (not os.path.isdir(name)):
                     os.mkdir(folderPath)
                 
-                if name in fileName:
+                if (name in fileName):
                     shutil.move(file, folderPath)
 
 def GitHub():
     open = messagebox.askquestion(title = "GitHub", message = "Open GitHub?")
-    if open == "yes":
+    if (open == "yes"):
         OpenGitHub()
 
 def OpenGitHub():
@@ -141,10 +141,12 @@ To run the program, just press the desired button. \n\
 you can make sub-folders search active by checking the checkbox", font = ("Ariel", 15))
 
     backButton = Button(helpWindow, text = "Go Back", command = helpWindow.destroy)
-
+    
     helpText.grid(column = 0, row = 0)
     helpText2.grid(column = 0, row = 1)
-    backButton.grid(column = 0, row = 2)
+    backButton.grid(column = 0, row = 3)
+
+    placeholder = Label(helpWindow).grid(column = 0, row = 2)
 #endregion
 #endregion
 
@@ -153,6 +155,7 @@ window = Tk()
 window.title("batchful")
 window.geometry(xSize + "x" + ySize)
 # window.wm_iconbitmap("Logo.ico")
+# window.tk_setPalette("black")
 
 title = Label(window, text = "batchful", font = ("Ariel Bold", 50))
 title.grid(column = 1, row = 0)
@@ -168,13 +171,16 @@ sortSubFoldersCheckBox = Checkbutton(window, text = "Search Sub-Folders", var = 
 sortSubFoldersCheckBox.grid(column = 2, row = 1)
 
 helpButton = Button(window, text = "Help", command = Help)
-helpButton.grid(column = 1, row = 2)
+helpButton.grid(column = 0, row = 3)
 
 gitHubButton = Button(window, text = "GitHub", command = GitHub)
-gitHubButton.grid(column = 2, row = 2)
+gitHubButton.grid(column = 1, row = 3)
 
 quitButton = Button(text = "Quit", command = window.destroy)
-quitButton.grid(column = 0, row = 5)
+quitButton.grid(column = 2, row = 5)
+
+placeholder = Label(window).grid(column = 0, row = 2)
+placeholder2 = Label(window).grid(column = 0, row = 4)
 
 window.mainloop()
 #endregion
