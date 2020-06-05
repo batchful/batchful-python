@@ -1,9 +1,11 @@
-# Imports modules
+#region modules
 import webbrowser, os, shutil
 from tkinter import *
 from tkinter.ttk import *
 from tkinter import messagebox
+#endregion
 
+#region variables
 # Final variables
 filePath = os.path.abspath(__file__) # Includes 'batchful.py'
 currentLocation = os.path.dirname(os.path.abspath(__file__)) # Doesn't include 'batchful.py'
@@ -11,6 +13,7 @@ currentLocation = os.path.dirname(os.path.abspath(__file__)) # Doesn't include '
 # Other variables
 xSize = "500"
 ySize = "500"
+#endregion
 
 #region functions
 def PrintLogo():
@@ -121,10 +124,11 @@ def Help():
     return
 #endregion
 
-# Main loop / code
+#region main loop
 window = Tk()
 window.title("batchful")
 window.geometry(xSize + "x" + ySize)
+# window.wm_iconbitmap("Logo.ico")
 
 title = Label(window, text = "batchful", font = ("Ariel Bold", 50))
 title.grid(column = 1, row = 0)
@@ -148,3 +152,4 @@ quitButton.grid(column = 0, row = 5)
 # quitButton.pack()
 
 window.mainloop()
+#endregion
