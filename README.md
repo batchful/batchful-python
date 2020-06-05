@@ -2,7 +2,7 @@
 # batchful
 A simple and easy-to use python directory organizer. 
 
-No installation needed -- just run the `.py` file in the desired folder.
+No installation needed -- just run the `.py` / `.exe` file in the desired folder.
 
 ## Usage
 Paste the program in the directory you wish to organize and run it.
@@ -18,5 +18,4 @@ This process deletes the unnecessary folders after it's done sorting.
 Press the button with the desired function to start.
 
 ## Coming Soon
-- An `.exe` version.
-- Making the file extension option only create folders for used files.
+- Better GUI
