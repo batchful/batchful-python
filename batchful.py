@@ -1,8 +1,16 @@
-import webbrowser, os, shutil, tkinter
+# Imports modules
+import webbrowser, os, shutil
+from tkinter import *
+from tkinter.ttk import *
+from tkinter import messagebox
 
 # Final variables
 filePath = os.path.abspath(__file__) # Includes 'batchful.py'
 currentLocation = os.path.dirname(os.path.abspath(__file__)) # Doesn't include 'batchful.py'
+
+# Other variables
+xSize = "500"
+ySize = "500"
 
 #region functions
 def PrintLogo():
@@ -26,8 +34,6 @@ def SubFolders():
                 shutil.move(path, currentLocation)
                     
                 CheckIfEmpty()
-           
-    Ask()
 
 def CheckIfEmpty():
     for root, subdirs, files in os.walk(currentLocation):
@@ -37,7 +43,10 @@ def CheckIfEmpty():
         if not files:
             os.rmdir(root)   
 
-def ByExt():        
+def ByExt():   
+    if sortSubFolders.get() == 1:
+        SubFolders()
+
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
         subdirs[:] = []
@@ -57,9 +66,30 @@ def ByExt():
                 
                 shutil.move(path, folderPath)
 
-def ByName():
-    print ("Enter a phrase:")
-    name = input("")
+def SortByName():
+    def GetName():
+        ByName(askName.get())
+
+    askWindow = Tk()
+    askWindow.title("batchful")
+    askWindow.geometry("200x200")
+
+    title = Label(askWindow, text = "Enter A Phrase")
+    title.grid(column = 1, row = 0)
+
+    askName = Entry(askWindow, width = 10)
+    askName.grid(column = 1, row = 1)
+
+    askButton = Button(askWindow, text = "Search", command = GetName)
+    askButton.grid(column = 1, row = 2)
+
+    quitButton = Button(askWindow, text = "Go Back", command = askWindow.destroy)
+    quitButton.grid(column = 0, row = 3)
+
+def ByName(name):
+    if sortSubFolders.get() == 1:
+        SubFolders()
+
 
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
@@ -77,12 +107,6 @@ def ByName():
                 
                 if name in fileName:
                     shutil.move(file, folderPath)
-    
-    print ("Run again? [Y/n]")
-    answer = input("")
-
-    if answer == "Y" or answer == "y":
-        ByName()
 
 def GitHub():
     print ("Made by 3174N and SFR-git \n")
@@ -95,32 +119,32 @@ def GitHub():
 
 def Help():
     return
-
-def Ask():
-    print ("This program organizes folders. place this file in the directory you wish to organize and run it.")
-    print ("Choose a method of organization: \n")
-    print ("1. By file extensions.")
-    print ("2. By file names.")
-    print ("3. Empty sub-folders. \n\n")
-    print ("Press g for the GitHub repository page, h for help and q to exit the program. \n")
-
-    answer = input("")
-
-    if answer == "1":
-        ByExt()
-    elif answer == "2":
-        ByName()
-    elif answer == "3":
-        SubFolders()
-    elif answer == "G" or answer == "g":
-        GitHub()
-    elif answer == "H" or answer == "h":
-        Help()
-
-def Exit():
-    return
 #endregion
 
 # Main loop / code
-PrintLogo()
-Ask()
+window = Tk()
+window.title("batchful")
+window.geometry(xSize + "x" + ySize)
+
+title = Label(window, text = "batchful", font = ("Ariel Bold", 50))
+title.grid(column = 1, row = 0)
+# title.pack()
+
+extensionButton = Button(window, text = "Sort By Extension", command = ByExt)
+extensionButton.grid(column = 0, row = 1)
+# extensionButton.pack()
+
+nameButton = Button(window, text = "Sort By Name", command = SortByName)
+nameButton.grid(column = 1, row = 1)
+# nameButton.pack()
+
+sortSubFolders = IntVar()
+sortSubFoldersCheckBox = Checkbutton(window, text = "Search Sub-Folders", var = sortSubFolders)
+sortSubFoldersCheckBox.grid(column = 2, row = 1)
+# sortSubFoldersCheckBox.pack()
+
+quitButton = Button(text = "Quit", command = window.destroy)
+quitButton.grid(column = 0, row = 5)
+# quitButton.pack()
+
+window.mainloop()
