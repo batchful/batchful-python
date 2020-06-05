@@ -1,10 +1,16 @@
 import webbrowser, os, shutil, tkinter
 
-
+# Final variables
 filePath = os.path.abspath(__file__) # Includes 'batchful.py'
 currentLocation = os.path.dirname(os.path.abspath(__file__)) # Doesn't include 'batchful.py'
 
-batchfulLogo = " _             _         _       __         _ \n| |__    __ _ | |_  ___ | |__   / _| _   _ | |\n| '_ \  / _` || __|/ __|| '_ \ | |_ | | | || |\n| |_) || (_| || |_| (__ | | | ||  _|| |_| || |\n|_.__/  \__,_| \__|\___||_| |_||_|   \__,_||_|"
+#region functions
+def PrintLogo():
+    print (" _             _         _       __         _ ")
+    print ("| |__    __ _ | |_  ___ | |__   / _| _   _ | |")
+    print ("| '_ \  / _` || __|/ __|| '_ \ | |_ | | | || |")
+    print ("| |_) || (_| || |_| (__ | | | ||  _|| |_| || |")
+    print ("|_.__/  \__,_| \__|\___||_| |_||_|   \__,_||_|")
 
 def SubFolders():
     for root, subdirs, files in os.walk(currentLocation):
@@ -30,7 +36,6 @@ def CheckIfEmpty():
 
         if not files:
             os.rmdir(root)   
-
 
 def ByExt():        
     for root, subdirs, files in os.walk(currentLocation):
@@ -112,8 +117,10 @@ def Ask():
     elif answer == "H" or answer == "h":
         Help()
 
-print (batchfulLogo)
-Ask()
-
 def Exit():
     return
+#endregion
+
+# Main loop / code
+PrintLogo()
+Ask()
