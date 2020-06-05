@@ -2,6 +2,7 @@
 import webbrowser, os, shutil
 from tkinter import *
 from tkinter.ttk import *
+from tkinter import messagebox
 
 # Final variables
 filePath = os.path.abspath(__file__) # Includes 'batchful.py'
@@ -128,7 +129,7 @@ def Ask():
     elif answer == "H" or answer == "h":
         Help()
 
-def Exit():
+
     return
 #endregion
 
@@ -139,16 +140,23 @@ window.geometry(xSize + "x" + ySize)
 
 title = Label(window, text = "batchful", font = ("Ariel Bold", 50))
 title.grid(column = 1, row = 0)
-title.focus()
+# title.pack()
 
 extensionButton = Button(window, text = "Sort By Extension", command = ByExt)
 extensionButton.grid(column = 0, row = 1)
+# extensionButton.pack()
 
 nameButton = Button(window, text = "Sort By Name", command = ByName)
 nameButton.grid(column = 1, row = 1)
+# nameButton.pack()
 
 sortSubFolders = IntVar()
 sortSubFoldersCheckBox = Checkbutton(window, text = "Search Sub-Folders", var = sortSubFolders)
 sortSubFoldersCheckBox.grid(column = 2, row = 1)
+# sortSubFoldersCheckBox.pack()
+
+quitButton = Button(text = "Quit", command = window.destroy)
+quitButton.grid(column = 2, row = 5)
+# quitButton.pack()
 
 window.mainloop()
