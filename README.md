@@ -2,7 +2,8 @@
 # batchful
 A simple and easy-to use python directory organizer. 
 
-No installation needed -- just run the `.py` / `.exe` file in the desired folder.
+## Installation
+Download Python 3.8.3 [here](https://www.python.org/downloads/).
 
 ## Usage
 Paste the program in the directory you wish to organize and run it.
