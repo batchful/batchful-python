@@ -1,5 +1,7 @@
 #region modules
 import webbrowser, os, shutil
+
+# tkinter modules
 from tkinter import *
 from tkinter.ttk import *
 from tkinter import messagebox
@@ -112,13 +114,12 @@ def ByName(name):
                     shutil.move(file, folderPath)
 
 def GitHub():
-    print ("Made by 3174N and SFR-git \n")
-    print ("Open GitHub? [Y/n] \n")
+    open = messagebox.askquestion(title = "GitHub", message = "Open GitHub?")
+    if open == "yes":
+        OpenGitHub()
 
-    answer = input("")
-
-    if answer == "Y" or answer == "y":
-        webbrowser.open("https://github.com/batchful/batchful-python")
+def OpenGitHub():
+    webbrowser.open("https://github.com/batchful/batchful-python")
 
 def Help():
     return
@@ -132,24 +133,25 @@ window.geometry(xSize + "x" + ySize)
 
 title = Label(window, text = "batchful", font = ("Ariel Bold", 50))
 title.grid(column = 1, row = 0)
-# title.pack()
 
 extensionButton = Button(window, text = "Sort By Extension", command = ByExt)
 extensionButton.grid(column = 0, row = 1)
-# extensionButton.pack()
 
 nameButton = Button(window, text = "Sort By Name", command = SortByName)
 nameButton.grid(column = 1, row = 1)
-# nameButton.pack()
 
 sortSubFolders = IntVar()
 sortSubFoldersCheckBox = Checkbutton(window, text = "Search Sub-Folders", var = sortSubFolders)
 sortSubFoldersCheckBox.grid(column = 2, row = 1)
-# sortSubFoldersCheckBox.pack()
+
+helpButton = Button(window, text = "Help", command = Help)
+helpButton.grid(column = 1, row = 2)
+
+gitHubButton = Button(window, text = "GitHub", command = GitHub)
+gitHubButton.grid(column = 2, row = 2)
 
 quitButton = Button(text = "Quit", command = window.destroy)
 quitButton.grid(column = 0, row = 5)
-# quitButton.pack()
 
 window.mainloop()
 #endregion
