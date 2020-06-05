@@ -16,5 +16,6 @@ You will also be presented with the option to sort through subfolders.
 This process deletes the unnecessary folders after it's done sorting.
 
 ## Coming Soon
+- An `.exe` version
 - A GUI version of the program is in development
 - Making the file extension option only create folders for used files
