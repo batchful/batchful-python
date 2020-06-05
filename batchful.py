@@ -18,13 +18,6 @@ ySize = "500"
 #endregion
 
 #region functions
-def PrintLogo():
-    print (" _             _         _       __         _ ")
-    print ("| |__    __ _ | |_  ___ | |__   / _| _   _ | |")
-    print ("| '_ \  / _` || __|/ __|| '_ \ | |_ | | | || |")
-    print ("| |_) || (_| || |_| (__ | | | ||  _|| |_| || |")
-    print ("|_.__/  \__,_| \__|\___||_| |_||_|   \__,_||_|")
-
 def SubFolders():
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
