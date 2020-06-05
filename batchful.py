@@ -83,6 +83,9 @@ def SortByName():
     askButton = Button(askWindow, text = "Search", command = GetName)
     askButton.grid(column = 1, row = 2)
 
+    quitButton = Button(askWindow, text = "Go Back", command = askWindow.destroy)
+    quitButton.grid(column = 0, row = 3)
+
 def ByName(name):
     if sortSubFolders.get() == 1:
         SubFolders()
@@ -141,7 +144,7 @@ sortSubFoldersCheckBox.grid(column = 2, row = 1)
 # sortSubFoldersCheckBox.pack()
 
 quitButton = Button(text = "Quit", command = window.destroy)
-quitButton.grid(column = 2, row = 5)
+quitButton.grid(column = 0, row = 5)
 # quitButton.pack()
 
 window.mainloop()
