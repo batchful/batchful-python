@@ -18,5 +18,4 @@ This process deletes the unnecessary folders after it's done sorting.
 Press the button with the desired function to start.
 
 ## Coming Soon
-- An `.exe` version.
-- Making the file extension option only create folders for used files.
+- Better GUI
