@@ -11,16 +11,26 @@ def SubFolders():
         files = [f for f in files if not f[0] == '.']
         subdirs[:] = [d for d in subdirs if not d[0] == '.']
 
+        CheckIfEmpty()
+        
         for file in files:
+            print (root, currentLocation)
             if root != currentLocation:
                 path = os.path.join(root, file)
                 shutil.move(path, currentLocation)
-    
-        for subdir in subdirs:
-            path = os.path.join(root, subdir)
-            os.rmdir(path)
-
+                    
+                CheckIfEmpty()
+           
     Ask()
+
+def CheckIfEmpty():
+    for root, subdirs, files in os.walk(currentLocation):
+        files = [f for f in files if not f[0] == '.']
+        subdirs[:] = [d for d in subdirs if not d[0] == '.']
+
+        if not files:
+            os.rmdir(root)   
+
 
 def ByExt():        
     for root, subdirs, files in os.walk(currentLocation):
