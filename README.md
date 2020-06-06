@@ -1,15 +1,25 @@
 *Maintained by [@3174N](https://github.com/3174N)*
 # batchful
-A simple and easy-to use python directory organizer. 
+A simple and easy-to use Python directory organizer. 
 
-No installation needed, just run the `batchful.exe` / `batchful.py`.
+No installation needed, just run `batchful.exe` / `batchful.py`.
 
 ## Usage
 Paste the program in the directory you wish to organize and run it.
 
 ### Dependencies
 To run batchful, the following dependencies are needed: 
-* `Python 3.8.3` ([download here](https://www.python.org/downloads/))
+* `Python 3.8.3`
+  * Upstream: [Official site](https://www.python.org/downloads/)
+  * for Ubuntu-based distributions: 
+    ```bash
+    $ sudo apt install software-properties-common
+    $ sudo add-apt-repository ppa:deadsnakes/ppa
+    $ sudo apt update
+    $ sudo apt install python3.8
+    ```
+  * for Arch-based distributions: [`python`](https://www.archlinux.org/packages/extra/x86_64/python/)<sup>AUR</sup>
+  * for Fedora/RedHat: `sudo dnf install python3 -y`
 
 ### Configuration
 There are currently two implemented methods of organization *(more coming soon -- see below)*: 
