@@ -20,7 +20,7 @@ filePath = os.path.abspath(__file__) # Includes 'batchful.py'
 currentLocation = os.path.dirname(os.path.abspath(__file__)) # Doesn't include 'batchful.py'
 
 # Other variables
-xSize = "500"
+xSize = "600"
 ySize = "500"
 #endregion
 
