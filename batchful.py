@@ -20,7 +20,7 @@ filePath = os.path.abspath(__file__) # Includes 'batchful.py'
 currentLocation = os.path.dirname(os.path.abspath(__file__)) # Doesn't include 'batchful.py'
 
 # Other variables
-xSize = "600"
+xSize = "500"
 ySize = "500"
 #endregion
 
@@ -31,7 +31,22 @@ def combineFuncs(*funcs):
             f(*args, **kwargs)
     return combinedFunc
 
-def SubFolders():
+def SubFolders(name, extension):
+    for root, subdirs, files in os.walk(currentLocation):
+        files = [f for f in files if not f[0] == '.']
+        subdirs[:] = [d for d in subdirs if not d[0] == '.']
+
+        for file in files:
+            path = os.path.join(root, file)
+            fileName = os.path.splitext(path)[0]
+            if (name in fileName):
+                if (root != currentLocation and path != filePath):
+                    print (file)
+                    shutil.move(path, currentLocation)
+        
+        CheckIfEmpty()
+
+def EmptySubFolders():
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
         subdirs[:] = [d for d in subdirs if not d[0] == '.']
@@ -56,7 +71,7 @@ def CheckIfEmpty():
 
 def ByExt():   
     if (sortSubFolders.get() == 1):
-        SubFolders()
+        EmptySubFolders()
 
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
@@ -104,24 +119,22 @@ def SortByName():
 
 def ByName(name):
     if (sortSubFolders.get() == 1):
-        SubFolders()
-
-
+        SubFolders(name, None)
+        
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
         subdirs[:] = []
 
         count = 0
-
         for file in files:
             path = os.path.join(root, file)
             fileName = os.path.splitext(path)[0]
-
+            
             if (path != filePath):
-                folderPath = os.path.join(root, name)
-
                 if (not os.path.isdir(name)):
+                    folderPath = os.path.join(root, name)
                     os.mkdir(folderPath)
+                    print ("Yes")
                 
                 if (name in fileName):
                     shutil.move(file, folderPath)
