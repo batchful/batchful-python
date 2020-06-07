@@ -2,9 +2,16 @@
 import webbrowser, os, shutil
 
 # tkinter modules
-from tkinter import *
-from tkinter.ttk import *
-from tkinter import messagebox
+try:
+    # For python 3+
+    from tkinter import *
+    from tkinter.ttk import *
+    from tkinter import messagebox
+except:
+    # For python 2+
+    from Tkinter import *
+    from ttk import *
+    import tkMessageBox as messagebox
 #endregion
 
 #region variables
@@ -149,11 +156,14 @@ This process deletes the unnecessary folders after it's done sorting. \n\
 To run the program, just press the desired button. \n\
 you can make sub-folders search active by checking the checkbox", font = ("Ariel", 15))
 
+    
     backButton = Button(helpWindow, text = "Go Back", command = helpWindow.destroy)
+    currentLocationLabel = Label(helpWindow, text = "Current location: " + str(currentLocation), font = ("Ariel 12"))
     
     helpText.grid(column = 0, row = 0)
     helpText2.grid(column = 0, row = 1)
-    backButton.grid(column = 0, row = 3)
+    currentLocationLabel.grid(column = 0, row = 3)
+    backButton.grid(column = 0, row = 4)
 
     placeholder = Label(helpWindow).grid(column = 0, row = 2)
 #endregion
@@ -168,6 +178,7 @@ window.geometry(xSize + "x" + ySize)
 
 title = Label(window, text = "batchful", font = ("Ariel Bold", 50))
 title.grid(column = 1, row = 0)
+
 
 extensionButton = Button(window, text = "Sort By Extension", command = ByExt)
 extensionButton.grid(column = 0, row = 1)
