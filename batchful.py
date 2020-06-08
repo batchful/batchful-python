@@ -50,15 +50,31 @@ else:
 # region kivy setup
 if usingKivy:
     class MainWindow(Screen):
+        sort_sub_folders = False
+
         def by_ext_button(self):
-            by_ext()
+            by_ext(self.sort_sub_folders)
+
+        def check_active_ext(self, *args):
+            if args[1]:
+                self.sort_sub_folders = True
+            else:
+                self.sort_sub_folders = False
 
 
     class NameWindow(Screen):
+        sort_sub_folders = False
         phrase = ObjectProperty(None)
 
         def by_name_button(self):
-            by_name(self.phrase.text)
+            print(self.phrase.text, self.sort_sub_folders)
+            by_name(self.phrase.text, self.sort_sub_folders)
+
+        def check_active_name(self, *args):
+            if args[1]:
+                self.sort_sub_folders = True
+            else:
+                self.sort_sub_folders = False
 
     class WindowManager(ScreenManager):
         pass
@@ -130,10 +146,12 @@ def check_if_empty():
             os.rmdir(root)
 
 
-def by_ext():
+def by_ext(sort_sub_folders):
     if usingTkinter:
-        if sortSubFolders.get() == 1:
-            empty_sub_folders()
+        if sortSubFolders:
+            sort_sub_folders = True
+    if sort_sub_folders:
+        empty_sub_folders()
 
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
@@ -185,10 +203,13 @@ def sort_by_name():
     quit_button.grid(column=0, row=3)
 
 
-def by_name(name):
+def by_name(name, sort_sub_folders):
     if usingTkinter:
         if sortSubFolders.get() == 1:
-            sub_folders(name, None)
+            sort_sub_folders = True
+
+    if sort_sub_folders:
+        sub_folders(name, None)
 
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
