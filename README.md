@@ -20,6 +20,18 @@ To run batchful, the following dependencies are needed:
     ```
   * for Arch-based distributions: [`python`](https://www.archlinux.org/packages/extra/x86_64/python/)<sup>AUR</sup>
   * for Fedora/RedHat: `sudo dnf install python3 -y`
+* `kivy` (Necessary for GUI)
+  * Download instructions: [Official site](https://kivy.org/#download)
+  * On windows:
+  ```commandline
+    > python -m pip install kivy
+    > python -m pip install docutils pygments pypiwin32 kivy_deps.sdl2==0.1.* kivy_deps.glew==0.1.*
+    > python -m pip install kivy_deps.gstreamer==0.1.*
+  ```
+    for python 3.5 and up:
+  ```commandline
+    > python -m pip install kivy_deps.angle==0.1.*
+  ```
 
 ### Configuration
 There are currently two implemented methods of organization *(more coming soon -- see below)*: 

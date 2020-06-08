@@ -1,0 +1,16 @@
+<MainWindow>:
+    name: "main"
+
+    Label:
+        font_size: 70  
+        center_x: root.width / 2
+        top: root.top - 25
+        text: "batchful"
+
+    Button:
+        text: "Sort By Extension"
+        on_press: root.ByExtButton()
+
+    Button:
+        text: "Sort By Name"
+        on_press: root.ByNameButton()
