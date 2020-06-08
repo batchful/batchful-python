@@ -1,17 +1,24 @@
 #region modules
-import webbrowser, os, shutil
+import webbrowser, os, shutil, time
 
-# tkinter modules
+# Tries to import kivy
 try:
-    # For python 3+
-    from tkinter import *
-    from tkinter.ttk import *
-    from tkinter import messagebox
+    from kivy.app import App
+    from kivy.uix.widget import Widget
+    usingKivy = True
 except:
-    # For python 2+
-    from Tkinter import *
-    from ttk import *
-    import tkMessageBox as messagebox
+    # tkinter modules
+    try:
+        # For python 3+
+        from tkinter import *
+        from tkinter.ttk import *
+        from tkinter import messagebox
+    except:
+        # For python 2+
+        from Tkinter import *
+        from ttk import *
+        import tkMessageBox as messagebox
+    usingTkinter = True
 #endregion
 
 #region variables
@@ -22,6 +29,13 @@ currentLocation = os.path.dirname(os.path.abspath(__file__)) # Doesn't include '
 # Other variables
 xSize = "500"
 ySize = "500"
+
+if (usingKivy):
+    usingTkinter = False
+elif (usingTkinter):
+    usingKivy = False
+else:
+    print ("ERROR: MODULES NOT IMPORTED CORRECTLY")
 #endregion
 
 #region functions
@@ -109,6 +123,7 @@ def SortByName():
     title.grid(column = 1, row = 0)
 
     askName = Entry(askWindow, width = 10)
+    askName.focus()
     askName.grid(column = 1, row = 1)
 
     askButton = Button(askWindow, text = "Search", command = combineFuncs(GetName, askWindow.destroy))
@@ -127,17 +142,37 @@ def ByName(name):
 
         count = 0
         for file in files:
+
             path = os.path.join(root, file)
             fileName = os.path.splitext(path)[0]
             
             if (path != filePath):
+                folderPath = os.path.join(root, name)
                 if (not os.path.isdir(name)):
-                    folderPath = os.path.join(root, name)
-                    os.mkdir(folderPath)
-                    print ("Yes")
+                    if (not os.path.isfile(name)):
+                        os.mkdir(folderPath)
+                    else:
+                        tempFolderPath = os.path.join(root, "TEMP FOLDER")
+                        if (not os.path.isdir(tempFolderPath) and not os.path.isfile(tempFolderPath)):
+                            os.mkdir(tempFolderPath)
+
+                        shutil.move(path, tempFolderPath)
+                        time.sleep(1)
+                        print ("YAY")
+                        path = os.path.join(path, tempFolderPath)
+                        if (not os.path.isfile(name)):
+                            os.mkdir(folderPath)
+                            print ('tset')
+
+                        shutil.move(path, folderPath)
+
+                        count += 1
+
+
+
                 
                 if (name in fileName):
-                    shutil.move(file, folderPath)
+                    shutil.move(path, folderPath)
                     count += 1
     
     messagebox.showinfo(title = "batchful", message = "Moved " + str(count) + " File(s)")
