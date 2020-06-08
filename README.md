@@ -1,6 +1,7 @@
 *Maintained by [@3174N](https://github.com/3174N)*
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/embersandsgamestudios)
+patreon: test
 # batchful
 A simple and easy-to use Python directory organizer. 
 
