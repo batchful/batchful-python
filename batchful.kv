@@ -17,15 +17,21 @@ WindowManager:
 
             Button:
                 text: "Sort By Extension"
-                font_size: 40
+                font_size: 30
                 on_press: root.by_ext_button()
 
             Button:
                 text: "Sort By Name"
-                font_size: 40
+                font_size: 30
                 on_release:
                     app.root.current = "name"
                     root.manager.transition.direction = "left"
+
+            Label:
+                text: "Search Sub-Folders"
+                font_size: 30
+            CheckBox:
+                on_active:
 
         Button:
             text: "Quit"
