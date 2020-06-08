@@ -32,6 +32,7 @@ To run batchful, the following dependencies are needed:
   ```commandline
     > python -m pip install kivy_deps.angle==0.1.*
   ```
+  * **NOTE:** If kivy is not installed, batchful will use tkinter as GUI
 
 ### Configuration
 There are currently two implemented methods of organization *(more coming soon -- see below)*: 

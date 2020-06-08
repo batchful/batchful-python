@@ -10,6 +10,8 @@ try:
     from kivy.uix.screenmanager import ScreenManager, Screen
     from kivy.properties import ObjectProperty
     from kivy.lang import Builder
+    from kivy.uix.popup import Popup
+    from kivy.uix.label import Label
 
     usingKivy = True
 except:
@@ -45,14 +47,28 @@ else:
     print("ERROR: MODULES NOT IMPORTED CORRECTLY")
 # endregion
 
-# region classes
+# region kivy setup
 if usingKivy:
     class MainWindow(Screen):
-        pass
+        def by_ext_button(self):
+            by_ext()
 
+
+    class NameWindow(Screen):
+        phrase = ObjectProperty(None)
+
+        def by_name_button(self):
+            by_name(self.phrase.text)
 
     class WindowManager(ScreenManager):
         pass
+
+
+    def show_moved_files(num):
+        pop = Popup(title="batchful",
+                    content=Label(text="Moved " + str(num) + " File(s)"),
+                    size_hint=(None, None), size=(200, 200))
+        pop.open()
 
     kv = Builder.load_file("batchful.kv")
 
@@ -115,8 +131,9 @@ def check_if_empty():
 
 
 def by_ext():
-    if sortSubFolders.get() == 1:
-        empty_sub_folders()
+    if usingTkinter:
+        if sortSubFolders.get() == 1:
+            empty_sub_folders()
 
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
@@ -128,7 +145,7 @@ def by_ext():
             path = os.path.join(root, file)
             file_extension = os.path.splitext(path)[1]
 
-            if path != filePath:
+            if path != filePath and file != "batchful.kv":
                 if file_extension != "":
                     folder_path = os.path.join(root, file_extension)
                 else:
@@ -140,7 +157,10 @@ def by_ext():
                 shutil.move(path, folder_path)
                 count += 1
 
-    messagebox.showinfo(title="batchful", message="Moved " + str(count) + " File(s)")
+    if usingTkinter:
+        messagebox.showinfo(title="batchful", message="Moved " + str(count) + " File(s)")
+    elif usingKivy:
+        show_moved_files(count)
 
 
 def sort_by_name():
@@ -166,8 +186,9 @@ def sort_by_name():
 
 
 def by_name(name):
-    if sortSubFolders.get() == 1:
-        sub_folders(name, None)
+    if usingTkinter:
+        if sortSubFolders.get() == 1:
+            sub_folders(name, None)
 
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
@@ -179,7 +200,7 @@ def by_name(name):
             path = os.path.join(root, file)
             file_name = os.path.splitext(path)[0]
 
-            if path != filePath:
+            if path != filePath and file != "batchful.kv":
                 folder_path = os.path.join(root, name)
                 if not os.path.isdir(name):
                     if not os.path.isfile(name):
@@ -203,7 +224,10 @@ def by_name(name):
                     shutil.move(path, folder_path)
                     count += 1
 
-    messagebox.showinfo(title="batchful", message="Moved " + str(count) + " File(s)")
+    if usingTkinter:
+        messagebox.showinfo(title="batchful", message="Moved " + str(count) + " File(s)")
+    elif usingKivy:
+        show_moved_files(count)
 
 
 def git_hub():

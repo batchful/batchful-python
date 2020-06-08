@@ -1,16 +1,53 @@
+WindowManager:
+    MainWindow:
+    NameWindow:
+
 <MainWindow>:
     name: "main"
 
-    Label:
-        font_size: 70  
-        center_x: root.width / 2
-        top: root.top - 25
-        text: "batchful"
+    GridLayout:
+        cols:1
 
-    Button:
-        text: "Sort By Extension"
-        on_press: root.ByExtButton()
+        Label:
+            text: "batchful"
+            font_size: 40
 
-    Button:
-        text: "Sort By Name"
-        on_press: root.ByNameButton()
+        GridLayout:
+            cols: 2
+
+            Button:
+                text: "Sort By Extension"
+                on_press: root.by_ext_button()
+
+            Button:
+                text: "Sort By Name"
+                on_release:
+                    app.root.current = "name"
+                    root.manager.transition.direction = "left"
+
+
+<NameWindow>:
+    name: "name"
+    phrase: phrase
+
+    GridLayout:
+        cols:2
+
+        Label:
+            text: "Enter A Phrase:"
+            font_size: 40
+        TextInput:
+            id: phrase
+
+        Button:
+            text: "Search"
+            on_release:
+                root.by_name_button()
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
