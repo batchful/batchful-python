@@ -21,23 +21,37 @@ To run batchful, the following dependencies are needed:
   * for Arch-based distributions: [`python`](https://www.archlinux.org/packages/extra/x86_64/python/)<sup>AUR</sup>
   * for Fedora/RedHat: `sudo dnf install python3 -y`
 * `kivy` (Necessary for GUI)
-  * Download instructions: [Official site](https://kivy.org/#download)
-  * On windows:
-    ```powershell
+  * Upstream: [Official site](https://kivy.org/#download)
+  * On Windows:
+  ```commandline
     > python -m pip install kivy
     > python -m pip install docutils pygments pypiwin32 kivy_deps.sdl2==0.1.* kivy_deps.glew==0.1.*
     > python -m pip install kivy_deps.gstreamer==0.1.*
-    ```
-    for python 3.5 and up:
-    ```powershell
+    
+    #  for python 3.5 and up:
     > python -m pip install kivy_deps.angle==0.1.*
+  ```
+  * for Ubuntu-based distributions: 
+    ```bash
+    $ sudo add-apt-repository ppa:kivy-team/kivy  
+    $ sudo apt update
+    $ sudo apt-get install python3-kivy
     ```
+  * For Debian-based distributions:
+  
+    Add `deb http://ppa.launchpad.net/kivy-team/kivy/ubuntu xenial main` to `/etc/apt/sources.list`
+    ```bash
+      $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A863D2D6
+      $ sudo apt update
+      $ sudo apt install python3-kivy
+      ```
+  
   * **NOTE:** If kivy is not installed, batchful will use tkinter as GUI
 
 ### Configuration
-There are currently two implemented methods of organization *(more coming soon -- see below)*: 
+There are currently two implemented methods of organization: 
 1. By file extension: creates a directory for every filetype and sorts the files accordingly. 
-2. By file name: creates a directory for a spacefic phrase and moves all of the files containing the phrase to the directory.
+2. By file name: creates a directory for a specific phrase and moves all of the files containing it to the directory.
 
 You will also be presented with the option to sort through subfolders.
 This process deletes the unnecessary folders after it's done sorting.
