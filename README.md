@@ -29,7 +29,7 @@ To run batchful, the following dependencies are needed:
     > python -m pip install kivy_deps.gstreamer==0.1.*
     ```
     for python 3.5 and up:
-    ```commandline
+    ```powershell
     > python -m pip install kivy_deps.angle==0.1.*
     ```
   * **NOTE:** If kivy is not installed, batchful will use tkinter as GUI
