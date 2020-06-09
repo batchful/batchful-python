@@ -14,6 +14,7 @@ try:
     from kivy.uix.label import Label
 
     usingKivy = True
+    usingTkinter = False
 except:
     # tkinter modules
     try:
@@ -28,6 +29,7 @@ except:
         import tkMessageBox as messagebox
 
     usingTkinter = True
+    usingKivy = False
 # endregion
 
 # region variables
@@ -61,6 +63,9 @@ if usingKivy:
             else:
                 self.sort_sub_folders = False
 
+        def git_hub(self):
+            open_git_hub()
+
 
     class NameWindow(Screen):
         sort_sub_folders = False
@@ -75,6 +80,11 @@ if usingKivy:
                 self.sort_sub_folders = True
             else:
                 self.sort_sub_folders = False
+    
+
+    class HelpWindow(Screen):
+        pass
+
 
     class WindowManager(ScreenManager):
         pass
@@ -289,7 +299,6 @@ you can make sub-folders search active by checking the checkbox", font=("Ariel",
 
     place_holder = Label(help_window).grid(column=0, row=2)
 # endregion
-
 
 # region main loop
 if usingKivy:
