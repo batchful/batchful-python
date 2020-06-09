@@ -52,6 +52,15 @@ else:
 # region kivy setup
 if usingKivy:
     class MainWindow(Screen):
+        """Main batchful window"""
+
+        def git_hub(self):
+            open_git_hub()
+
+
+    class ExtWindow(Screen):
+        """Sort by extension window"""
+
         sort_sub_folders = False
 
         def by_ext_button(self):
@@ -63,11 +72,9 @@ if usingKivy:
             else:
                 self.sort_sub_folders = False
 
-        def git_hub(self):
-            open_git_hub()
-
 
     class NameWindow(Screen):
+        """Sort by name window"""
         sort_sub_folders = False
         phrase = ObjectProperty(None)
 
@@ -83,6 +90,7 @@ if usingKivy:
     
 
     class HelpWindow(Screen):
+        """Help window"""
         pass
 
 
@@ -91,6 +99,7 @@ if usingKivy:
 
 
     def show_moved_files(num):
+        """Creates popup with the number of moved files"""
         pop = Popup(title="batchful",
                     content=Label(text="Moved " + str(num) + " File(s)"),
                     size_hint=(None, None), size=(200, 200))
@@ -107,7 +116,9 @@ if usingKivy:
 # endregion
 
 # region functions
+# region sub-folders
 def combine_funcs(*funcs):
+    """Combines several functions into one"""
     def combined_func(*args, **kwargs):
         for f in funcs:
             f(*args, **kwargs)
@@ -116,6 +127,7 @@ def combine_funcs(*funcs):
 
 
 def sub_folders(name, extension):
+    """Searches sub-folders for specific files"""
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
         subdirs[:] = [d for d in subdirs if not d[0] == '.']
@@ -132,6 +144,7 @@ def sub_folders(name, extension):
 
 
 def empty_sub_folders():
+    """Empties all sub-folders"""
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
         subdirs[:] = [d for d in subdirs if not d[0] == '.']
@@ -148,15 +161,19 @@ def empty_sub_folders():
 
 
 def check_if_empty():
+    """Deletes empty sub-folders"""
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
         subdirs[:] = [d for d in subdirs if not d[0] == '.']
 
         if not files:
             os.rmdir(root)
+# endregion
 
 
+# region sorters
 def by_ext(sort_sub_folders):
+    """Sorts files by extension"""
     if usingTkinter:
         if sortSubFolders:
             sort_sub_folders = True
@@ -192,6 +209,7 @@ def by_ext(sort_sub_folders):
 
 
 def sort_by_name():
+    """Create input window for tkinter"""
     def get_name():
         by_name(ask_name.get())
 
@@ -214,6 +232,7 @@ def sort_by_name():
 
 
 def by_name(name, sort_sub_folders):
+    """Sorts files by specific input"""
     if usingTkinter:
         if sortSubFolders.get() == 1:
             sort_sub_folders = True
@@ -259,19 +278,24 @@ def by_name(name, sort_sub_folders):
         messagebox.showinfo(title="batchful", message="Moved " + str(count) + " File(s)")
     elif usingKivy:
         show_moved_files(count)
+# endregion
 
 
+# region other
 def git_hub():
+    """Creates GitHub popup window for tkinter"""
     open = messagebox.askquestion(title="GitHub", message="Open GitHub?")
     if open == "yes":
         open_git_hub()
 
 
 def open_git_hub():
+    """Opens GitHub"""
     webbrowser.open("https://github.com/batchful/batchful-python")
 
 
 def help():
+    """Creates help window for tkinter"""
     help_window = Tk()
     help_window.title("batchful - help")
 
@@ -299,6 +323,8 @@ you can make sub-folders search active by checking the checkbox", font=("Ariel",
 
     place_holder = Label(help_window).grid(column=0, row=2)
 # endregion
+# endregion
+
 
 # region main loop
 if usingKivy:
