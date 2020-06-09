@@ -32,6 +32,7 @@ except:
     usingKivy = False
 # endregion
 
+
 # region variables
 # Final variables
 filePath = os.path.abspath(__file__)  # Includes 'batchful.py'
@@ -49,6 +50,7 @@ else:
     print("ERROR: MODULES NOT IMPORTED CORRECTLY")
 # endregion
 
+
 # region kivy setup
 if usingKivy:
     class MainWindow(Screen):
@@ -56,6 +58,10 @@ if usingKivy:
 
         def git_hub(self):
             open_git_hub()
+
+
+    class SortingWindow(Screen):
+        pass
 
 
     class ExtWindow(Screen):
@@ -114,6 +120,7 @@ if usingKivy:
 
 
 # endregion
+
 
 # region functions
 # region sub-folders

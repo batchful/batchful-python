@@ -2,6 +2,7 @@
 
 WindowManager:
     MainWindow:
+    SortingWindow:
     ExtWindow:
     NameWindow:
     HelpWindow:
@@ -9,73 +10,123 @@ WindowManager:
 <MainWindow>:
     name: "main"
 
-    GridLayout:
+    FloatLayout:
         cols:1
 
         Label:
             text: "batchful"
-            font_size: 100
+            size_hint: 0.8, 0.2
+            pos_hint: {"x":0.1, "top":0.99}
+            font_size: (root.width**2 + root.height**2) / 10.6**4
 
-        GridLayout:
-            cols: 2
+        Button:
+            text: "Start Sorting"
+            pos_hint: {"x":0.1, "top":0.75}
+            size_hint: 0.8, 0.20
+            font_size: (root.width**2 + root.height**2) / 13**4
+            on_release:
+                app.root.current = "sort"
+                root.manager.transition.direction = "up"
 
-            Button:
-                text: "Sort By Name"
-                font_size: 30
-                on_release:
-                    app.root.current = "name"
-                    root.manager.transition.direction = "right"
-
-            Button:
-                text: "Sort By Extension"
-                font_size: 30
-                on_release:
-                    app.root.current = "ext"
-                    root.manager.transition.direction = "left"
-
-            Button:
-                text: "Help"
-                font_size: 30
-                on_release:
-                    app.root.current = "help"
-                    root.manager.transition.direction = "down"
-
-            Button:
-                text: "GitHub"
-                font_size: 30
-                on_release: root.git_hub()
+        Button:
+            text: "GitHub"
+            pos_hint: {"x":0.2,"y":0.33}
+            size_hint: 0.6, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            on_release: root.git_hub()
 
         Button:
             text: "Quit"
-            font_size: 40
+            pos_hint: {"x":0.3, "y": 0.1}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 15**4
             on_release:
                 app.get_running_app().stop()
 
 
+<SortingWindow>:
+    name: "sort"
+
+    FloatLayout:
+        cols:1
+
+        Button:
+            text: "Sort By Name"
+            pos_hint: {"x":0.09, "top":0.75}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 13**4
+            on_release:
+                app.root.current = "name"
+                root.manager.transition.direction = "right"
+
+        Button:
+            text: "Sort By Extension"
+            pos_hint: {"x":0.51, "top":0.75}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 13**4
+            on_release:
+                app.root.current = "ext"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Help"
+            pos_hint: {"x":0.1,"y":0.35}
+            size_hint: 0.8, 0.15
+            font_size: (root.width**2 + root.height**2) / 13**4
+            on_release:
+                app.root.current = "help"
+                root.manager.transition.direction = "down"
+
+        Button:
+            text: "Go Back"
+            pos_hint: {"x":0.3, "y": 0.1}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 15**4
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "down"
+
+
 <ExtWindow>:
     name: "ext"
-    GridLayout:
-        cols:2
+
+    FloatLayout:
+        cols: 1
+
+        Label:
+            text: "Sort By Extension"
+            size_hint: 0.8, 0.2
+            pos_hint: {"x":0.1, "top":0.99}
+            font_size: (root.width**2 + root.height**2) / 10.6**4
 
         Label:
             text: "Search Sub-Folders"
-            font_size: 30
+            font_size: (root.width**2 + root.height**2) / 14**4
+            size_hint: 0.8, 0.2
+            pos_hint: {"x":0, "top":0.75}
         CheckBox:
+            size_hint: 0.2, 0.2
+            pos_hint: {"x":0.5, "top":0.75}
             on_active:
                 root.check_active_ext(*args)
 
         Button:
             text: "Sort"
-            font_size: 30
+            font_size: (root.width**2 + root.height**2) / 14**4
+            pos_hint: {"x":0.1,"y":0.35}
+            size_hint: 0.8, 0.15
+            font_size: (root.width**2 + root.height**2) / 13**4
             on_press:
                 root.by_ext_button()
-                app.root.current = "main"
+                app.root.current = "sort"
                 root.manager.transition.direction = "right"
         Button:
             text: "Go Back"
-            font_size: 30
+            pos_hint: {"x":0.3, "y": 0.1}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 15**4
             on_press:
-                app.root.current = "main"
+                app.root.current = "sort"
                 root.manager.transition.direction = "right"
 
 
@@ -83,41 +134,79 @@ WindowManager:
     name: "name"
     phrase: phrase
 
-    GridLayout:
-        cols:2
+    FloatLayout:
+        cols: 1
+
+        Label:
+            text: "Sort By Name"
+            size_hint: 0.8, 0.2
+            pos_hint: {"x":0.1, "top":0.99}
+            font_size: (root.width**2 + root.height**2) / 10.6**4
 
         Label:
             text: "Enter A Phrase:"
-            font_size: 40
+            font_size: (root.width**2 + root.height**2) / 14**4
+            size_hint: 0.8, 0.2
+            pos_hint: {"x":-0.05, "top":0.80}
         TextInput:
             id: phrase
+            multiline: False
+            font_size: (root.width**2 + root.height**2) / 14**4
+            size_hint: 0.3, 0.12
+            pos_hint: {"x":0.5, "top":0.75}
 
         Label:
             text: "Search Sub-Folders"
-            font_size: 40
+            font_size: (root.width**2 + root.height**2) / 14**4
+            size_hint: 0.8, 0.2
+            pos_hint: {"x":0, "top":0.60}
         CheckBox:
+            size_hint: 0.2, 0.2
+            pos_hint: {"x":0.5, "top":0.60}
             on_active:
                 root.check_active_name(*args)
 
         Button:
             text: "Search"
+            font_size: (root.width**2 + root.height**2) / 14**4
+            pos_hint: {"x":0.1,"y":0.25}
+            size_hint: 0.8, 0.15
+            font_size: (root.width**2 + root.height**2) / 13**4
             on_release:
                 root.by_name_button()
-                app.root.current = "main"
+                app.root.current = "sort"
                 root.manager.transition.direction = "left"
 
         Button:
             text: "Go Back"
+            pos_hint: {"x":0.3, "y": 0.07}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 15**4
             on_release:
-                app.root.current = "main"
+                app.root.current = "sort"
                 root.manager.transition.direction = "left"
 
 <HelpWindow>:
     name: "help"
 
-    Button:
-        text: "Go Back"
-        font_size: 30
-        on_release:
-            app.root.current = "main"
-            root.manager.transition.direction = "up"
+    FloatLayout:
+        cols: 1
+
+        Label:
+            text: "How To Use batchful?"
+            size_hint: 0.8, 0.2
+            pos_hint: {"x":0.1, "top":0.99}
+            font_size: (root.width**2 + root.height**2) / 12**4
+        Label:
+            text: "In the main screen, choose a method of organization.\nCurrently, there are 2 methods of organization: \n1. By file extension: creates a directory for every filetype \n    and sorts the files accordingly. \n2. By file name: creates a directory for a spacefic phrase and moves \n    all of the files containing the phrase to the directory. \n\nYou will also be presented with the option to sort through subfolders. \nThis process deletes the unnecessary folders after it's done sorting. \n\nTo run the program, just press the desired button. \nyou can make sub-folders search active by checking the checkbox."
+            pos_hint: {"x":0, "top":1}
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+
+        Button:
+            text: "Go Back"
+            pos_hint: {"x":0.3, "y": 0.07}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 15**4
+            on_release:
+                app.root.current = "sort"
+                root.manager.transition.direction = "up"
