@@ -5,6 +5,7 @@
 A simple and easy-to use Python directory organizer. 
 
 No installation needed, just run `batchful.exe` / `batchful.py`.
+If using `.py` version, `batchful.kv` file shuold be in the same directory as `bachful.py`. 
 
 ## Usage
 Paste the program in the directory you wish to organize and run it.
