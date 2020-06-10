@@ -61,5 +61,4 @@ This process deletes the unnecessary folders after it's done sorting.
 Press the button with the desired function to start.
 
 ## Coming Soon
-- Better GUI
-- Dark theme
+- Light theme for kivy GUI
