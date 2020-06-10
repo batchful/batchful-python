@@ -11,7 +11,7 @@ Paste the program in the directory you wish to organize and run it.
 
 ### Dependencies
 To run batchful, the following dependencies are needed: 
-* `Python 3.7.3` (Should also work on older / newer versions)
+* `Python 3.7` (Should also work on older / newer versions but Python 3.7 is the most recommended)
   * Upstream: [Official site](https://www.python.org/downloads/)
   * for Ubuntu-based distributions: 
     ```bash
