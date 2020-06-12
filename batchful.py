@@ -34,11 +34,9 @@ except:
 
 
 # region variables
-# Final variables
 filePath = os.path.abspath(__file__)  # Includes 'batchful.py'
 currentLocation = os.path.dirname(os.path.abspath(__file__))  # Doesn't include 'batchful.py'
 
-# Other variables
 xSize = "500"
 ySize = "500"
 
@@ -55,6 +53,11 @@ else:
 if usingKivy:
     class MainWindow(Screen):
         """Main batchful window"""
+        dir = ObjectProperty(None)
+
+        def sort(self):
+            if self.dir.text != "":
+                change_loc(self.dir.text)
 
         def git_hub(self):
             open_git_hub()
@@ -63,10 +66,8 @@ if usingKivy:
     class SortingWindow(Screen):
         pass
 
-
     class ExtWindow(Screen):
         """Sort by extension window"""
-
         sort_sub_folders = False
 
         def by_ext_button(self):
@@ -85,7 +86,6 @@ if usingKivy:
         phrase = ObjectProperty(None)
 
         def by_name_button(self):
-            print(self.phrase.text, self.sort_sub_folders)
             by_name(self.phrase.text, self.sort_sub_folders)
 
         def check_active_name(self, *args):
@@ -181,12 +181,14 @@ def check_if_empty():
 # region sorters
 def by_ext(sort_sub_folders):
     """Sorts files by extension"""
+
     if usingTkinter:
         if sortSubFolders:
             sort_sub_folders = True
     if sort_sub_folders:
         empty_sub_folders()
 
+    print(currentLocation)
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
         subdirs[:] = []
@@ -329,6 +331,11 @@ you can make sub-folders search active by checking the checkbox", font=("Ariel",
     back_button.grid(column=0, row=4)
 
     place_holder = Label(help_window).grid(column=0, row=2)
+
+
+def change_loc(new_loc):
+    global currentLocation
+    currentLocation = new_loc
 # endregion
 # endregion
 
