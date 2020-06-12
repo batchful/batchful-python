@@ -212,13 +212,13 @@ WindowManager:
             pos_hint: {"x":0.1, "top":0.99}
             font_size: (root.width**2 + root.height**2) / 12**4
         Label:
-            text: "In the main screen, choose a method of organization.\nCurrently, there are 2 methods of organization: \n1. By file extension: creates a directory for every filetype \n    and sorts the files accordingly. \n2. By file name: creates a directory for a spacefic phrase and moves \n    all of the files containing the phrase to the directory. \n\nYou will also be presented with the option to sort through subfolders. \nThis process deletes the unnecessary folders after it's done sorting. \n\nTo run the program, just press the desired button. \nyou can make sub-folders search active by checking the checkbox."
+            text: "First of all, enter a directory of witch you would like to sort. \nIf the field will stay empty, the program will run in the directory \nwitch this file is placed in. \n\nIn the main screen, choose a method of organization.\nCurrently, there are 2 methods of organization: \n1. By file extension: creates a directory for every filetype \n    and sorts the files accordingly. \n2. By file name: creates a directory for a spacefic phrase and moves \n    all of the files containing the phrase to the directory. \n\nYou will also be presented with the option to sort through subfolders. \nThis process deletes the unnecessary folders after it's done sorting. \n\nTo run the program, just press the desired button. \nyou can make sub-folders search active by checking the checkbox."
             pos_hint: {"x":0, "top":1}
             font_size: (root.width**2 + root.height**2) / 14.5**4
 
         Button:
             text: "Go Back"
-            pos_hint: {"x":0.3, "y": 0.07}
+            pos_hint: {"x":0.3, "y": 0.03}
             size_hint: 0.4, 0.1
             font_size: (root.width**2 + root.height**2) / 15**4
             on_release:

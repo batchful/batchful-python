@@ -188,7 +188,6 @@ def by_ext(sort_sub_folders):
     if sort_sub_folders:
         empty_sub_folders()
 
-    print(currentLocation)
     for root, subdirs, files in os.walk(currentLocation):
         files = [f for f in files if not f[0] == '.']
         subdirs[:] = []
