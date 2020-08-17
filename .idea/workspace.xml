@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98ae0a36-3137-4a69-9711-cac966c708c7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/batchful-python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/batchful-python.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/3174N.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/batchful.spec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/batchful.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/CONTRIBUTING.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/LICENSE.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +19,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager">
     <configuration name="batchful" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -71,21 +65,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="586" y="198" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1597643277982" />
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1597643329569">
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1597646412338">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597643329569" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1597643329569">
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597646412338" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1597646412338">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597643329569" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1597643329568">
+    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597646412338" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1597646412338">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597643329568" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1597643329569">
+    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597646412338" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1597646412338">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597643329569" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597646412338" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1597646497529">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1597646497529" />
+    <state x="733" y="68" width="621" height="609" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1597646489177">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="733" y="68" width="621" height="609" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597646489177" />
   </component>
 </project>
